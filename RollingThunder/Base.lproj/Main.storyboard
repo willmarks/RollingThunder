@@ -143,8 +143,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOY-7K-OI7">
-                                <rect key="frame" x="285" y="229" width="315" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enemy 000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfU-To-mau">
+                                <rect key="frame" x="85" y="62" width="119" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Health" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B9-NM-Fbo">
+                                <rect key="frame" x="0.0" y="395" width="86" height="21"/>
+                                <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLg-JX-hh9">
+                                <rect key="frame" x="0.0" y="376" width="86" height="21"/>
+                                <color key="backgroundColor" red="0.40000000596046448" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -152,6 +166,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="attackSlots" destination="KOk-9y-aPB" id="Kuu-UV-h0f"/>
+                        <outlet property="defenseSlots" destination="fjo-oG-C7U" id="bRB-ZN-D9K"/>
+                        <outlet property="healingSlots" destination="adJ-Dn-vSx" id="z5y-H1-MKA"/>
+                        <outlet property="health" destination="3B9-NM-Fbo" id="iL8-ew-mHi"/>
+                        <outlet property="name" destination="jLg-JX-hh9" id="Yfn-UK-bqR"/>
+                        <outlet property="numberDice" destination="NdO-nV-iqc" id="lFY-dx-xpt"/>
+                        <outlet property="position1" destination="3Eq-NW-qLW" id="fTI-I5-KWG"/>
+                        <outlet property="position2" destination="Rzn-84-JL6" id="4fP-d9-pqj"/>
+                        <outlet property="position3" destination="MTP-zp-bar" id="gjF-cC-46K"/>
+                        <outlet property="position4" destination="fnR-55-gu9" id="hNz-Iq-xND"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

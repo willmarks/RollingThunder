@@ -10,8 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var position1: UIButton!
+    @IBOutlet weak var position2: UIButton!
+    @IBOutlet weak var position3: UIButton!
+    @IBOutlet weak var position4: UIButton!
+    
+    @IBOutlet weak var attackSlots: UIButton!
+    @IBOutlet weak var defenseSlots: UIButton!
+    @IBOutlet weak var healingSlots: UIButton!
+    
+    @IBOutlet weak var numberDice: UILabel!
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var health: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // UI
+        var buttons = [[position1, position2, position3, position4]]
         
         var die = [1, 2, 3, 4, 5, 6]
         
@@ -28,15 +46,23 @@ class ViewController: UIViewController {
         // we need an enemy formation
         var eForm: Formation = Formation(field: [[blackHand]])
         
-        //battleground
+        // battleground
         var battleground = Battleground(level: [eForm], playerFormation: pForm)
+        
+        // updates buttons
+        for (var i = 0; i < battleground.playerFormation.charField.count; i++) {
+            for (var j = 0; j < battleground.playerFormation.charField[i].count; j++) {
+                
+                println("row: \(i), column: \(j) row length: \(battleground.playerFormation.charField[i].count)")
+                
+                buttons[i][j].setTitle(battleground.playerFormation.charField[i][j].name, forState: .Normal)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

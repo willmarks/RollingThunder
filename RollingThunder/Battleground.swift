@@ -25,7 +25,4 @@ class Battleground: NSObject {
         playerFormation = player
         turn = true
     }
-    
-    
-    
 }
