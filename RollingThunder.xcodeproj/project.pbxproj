@@ -13,6 +13,10 @@
 		8FD0005F1B4F770D003D5324 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0005E1B4F770D003D5324 /* Images.xcassets */; };
 		8FD000621B4F770D003D5324 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD000601B4F770D003D5324 /* LaunchScreen.xib */; };
 		8FD0006E1B4F770E003D5324 /* RollingThunderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0006D1B4F770E003D5324 /* RollingThunderTests.swift */; };
+		8FD000781B4F773D003D5324 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD000771B4F773D003D5324 /* Character.swift */; };
+		8FD0007A1B4F7EFC003D5324 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD000791B4F7EFC003D5324 /* Formation.swift */; };
+		8FD0007C1B4F803A003D5324 /* Battleground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0007B1B4F803A003D5324 /* Battleground.swift */; };
+		8FD0007E1B4F843A003D5324 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0007D1B4F843A003D5324 /* Monster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		8FD000671B4F770E003D5324 /* RollingThunderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollingThunderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD0006C1B4F770E003D5324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FD0006D1B4F770E003D5324 /* RollingThunderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingThunderTests.swift; sourceTree = "<group>"; };
+		8FD000771B4F773D003D5324 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		8FD000791B4F7EFC003D5324 /* Formation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
+		8FD0007B1B4F803A003D5324 /* Battleground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battleground.swift; sourceTree = "<group>"; };
+		8FD0007D1B4F843A003D5324 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,10 @@
 			children = (
 				8FD000571B4F770D003D5324 /* AppDelegate.swift */,
 				8FD000591B4F770D003D5324 /* ViewController.swift */,
+				8FD000771B4F773D003D5324 /* Character.swift */,
+				8FD000791B4F7EFC003D5324 /* Formation.swift */,
+				8FD0007B1B4F803A003D5324 /* Battleground.swift */,
+				8FD0007D1B4F843A003D5324 /* Monster.swift */,
 				8FD0005B1B4F770D003D5324 /* Main.storyboard */,
 				8FD0005E1B4F770D003D5324 /* Images.xcassets */,
 				8FD000601B4F770D003D5324 /* LaunchScreen.xib */,
@@ -212,7 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD0007C1B4F803A003D5324 /* Battleground.swift in Sources */,
+				8FD000781B4F773D003D5324 /* Character.swift in Sources */,
+				8FD0007A1B4F7EFC003D5324 /* Formation.swift in Sources */,
 				8FD0005A1B4F770D003D5324 /* ViewController.swift in Sources */,
+				8FD0007E1B4F843A003D5324 /* Monster.swift in Sources */,
 				8FD000581B4F770D003D5324 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
