@@ -15,12 +15,12 @@ class Formation: NSObject {
     var charField: [[Character]]!
     var monsterField: [[Monster]]!
     
-    init(field: [[Character]]) {
+    init(characterField: [[Character]]) {
         
-        self.charField = field
+        self.charField = characterField
     }
     
-    init(field: [[Monster]]) {
-        self.monsterField = field
+    init(monsterField: [[Monster]]) {
+        self.monsterField = monsterField
     }
 }
