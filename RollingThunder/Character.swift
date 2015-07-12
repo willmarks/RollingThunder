@@ -30,6 +30,7 @@ class Character: NSObject {
     
     // stats
     var health: Int!
+    var curHealth: Int!
     var attackSlots: Int!
     var defenseSlots: Int!
     var recoverySlots: Int!
@@ -50,6 +51,7 @@ class Character: NSObject {
     init(name: String, health: Int, attackSlots: Int, defenseSlots: Int, recoverySlots: Int, type: Int, mobility: Int, style: Int, dice: [[Int]], specialDice: [Int]) {
         
         self.health = health
+        self.curHealth = health
         self.attackSlots = attackSlots
         self.defenseSlots = defenseSlots
         self.recoverySlots = recoverySlots
@@ -58,6 +60,22 @@ class Character: NSObject {
         self.style = CharacterStyle(rawValue: style)
         self.dice = dice
         self.specialDice = specialDice
+    }
+    
+    //modifies health
+    func modHealth(xhealth: Int) -> Int{
+        curHealth = curHealth + xhealth
+        if(curHealth > health){
+            curHealth = health
+        }
+        if(curHealth < 0){
+            curHealth = 0
+        }
+        return curHealth
+    }
+    //Selects a random number from an array of Ints
+    func rollDice(dice: [Int]) -> Int{
+        return dice[Int(arc4random_uniform(UInt32(dice.count)))]
     }
     
 }
