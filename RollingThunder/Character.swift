@@ -62,6 +62,8 @@ class Character: NSObject {
         self.specialDice = specialDice
     }
     
+    /*############# MODIFIERS ############*/
+    
     //modifies health
     func modHealth(xhealth: Int) -> Int{
         curHealth = curHealth + xhealth
