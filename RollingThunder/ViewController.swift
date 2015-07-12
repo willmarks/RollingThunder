@@ -21,11 +21,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var characterGrid: UICollectionView!
     
+    var battleground: Battleground!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //UI
-        characterGrid.dataSource = self
         
         var die = [1, 2, 3, 4, 5, 6]
         
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         var eForm: Formation = Formation(monsterField: [[blackHand]])
         
         // battleground
-        var battleground = Battleground(level: [eForm], playerFormation: pForm)
+        battleground = Battleground(level: [eForm], playerFormation: pForm)
         
     }
 
@@ -54,28 +53,45 @@ class ViewController: UIViewController {
 
 }
 
-extension UIViewController : UICollectionViewDataSource {
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+// provides data to the characters
+extension ViewController : UICollectionViewDataSource {
+    internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+
         return 1
     }
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return 12
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("characterCell", forIndexPath: indexPath) as! UICollectionViewCell
-        cell.backgroundColor = UIColor.blackColor()
+    internal func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        //create the cell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! UICollectionViewCell
+        
         // Configure the cell
+        cell.backgroundColor = UIColor.whiteColor()
+        
         return cell
     }
 }
 
-extension UIViewController : UICollectionViewDelegateFlowLayout {
-//    public func collectionView(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        
-//        
-//    }
+// provides the layout for the characters
+extension ViewController : UICollectionViewDelegateFlowLayout {
+    internal func collectionView(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        var width = characterGrid.collectionViewLayout.collectionViewContentSize().width / 3 - 10
+        
+        println(width)
+        
+        return CGSize(width: width, height: width)
+    }
+    
+    internal func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+    }
 }
 
 

@@ -14,8 +14,8 @@ class Battleground: NSObject {
     var turn: Bool
     
     // Formations
-    var level: [Formation]
-    var playerFormation: Formation
+    var level: [Formation]!
+    var playerFormation: Formation!
 
     //loot
 

@@ -423,6 +423,7 @@
 				8FD000731B4F770E003D5324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FD000741B4F770E003D5324 /* Build configuration list for PBXNativeTarget "RollingThunderTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +432,7 @@
 				8FD000761B4F770E003D5324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

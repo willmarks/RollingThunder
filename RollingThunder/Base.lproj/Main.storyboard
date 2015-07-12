@@ -70,13 +70,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dZJ-Ta-Fur" customClass="UIViewController" customModule="RollingThunder" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dZJ-Ta-Fur">
                                 <rect key="frame" x="64" y="226" width="256" height="341.5"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dZJ-Ta-Fur" secondAttribute="height" multiplier="3:4" id="GKg-Vh-d4g"/>
                                 </constraints>
-                                <collectionViewLayout key="collectionViewLayout" id="bor-HY-R3X"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k6E-2w-H78">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterCell" id="db1-8k-PFc">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -86,8 +91,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="CgZ-DR-SXt"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UJY-AY-P6P"/>
+                                </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharacterPlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-Wp-cIY">
                                 <rect key="frame" x="0.0" y="226" width="64" height="63"/>
@@ -171,7 +181,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="attackSlots" destination="KOk-9y-aPB" id="Kuu-UV-h0f"/>
-                        <outlet property="characterGrid" destination="dZJ-Ta-Fur" id="Y1m-FE-Dt5"/>
+                        <outlet property="characterGrid" destination="dZJ-Ta-Fur" id="Ecj-cr-1M0"/>
                         <outlet property="defenseSlots" destination="fjo-oG-C7U" id="bRB-ZN-D9K"/>
                         <outlet property="healingSlots" destination="adJ-Dn-vSx" id="z5y-H1-MKA"/>
                         <outlet property="health" destination="3B9-NM-Fbo" id="iL8-ew-mHi"/>
