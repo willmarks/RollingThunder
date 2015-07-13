@@ -13,18 +13,20 @@ class Monster: NSObject {
     
     // stats
     var mainAttack: [Int]!
+    var cooldown: [Int];
     var health: Int!
     var curHealth: Int!
     
     // skills
     // special attack
     
-    init(mainAttack: [Int], health: Int) {
+    init(mainAttack: [Int], health: Int, cdown: [Int]) {
+        self.cooldown = cdown
         self.mainAttack = mainAttack
         self.health = health
     }
     
-    /*############# MODIFIERS ############*/
+    /*############# Battle Time Methods ############*/
     
     //modifies health
     func modHealth(xhealth: Int) -> Int{
@@ -38,8 +40,8 @@ class Monster: NSObject {
         return curHealth
     }
     
-    func attack(turn: Int, formation: Formation) -> (Int,[Int]){
-        return (mainAttack[turn],formation.getRanAliveChar())
+    func mainAttack(turn: Int, formation: Formation) -> (Int,Int,[Int]){
+        return (mainAttack[turn],cooldown[turn],formation.getRanAliveChar())
     }
     
     

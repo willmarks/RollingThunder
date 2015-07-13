@@ -34,6 +34,11 @@ class Character: NSObject {
     var attackSlots: Int!
     var defenseSlots: Int!
     var recoverySlots: Int!
+    
+    var curAttackSlots: Int!
+    var curDefenseSlots: Int!
+    var curRecoverySlots: Int!
+    
     var type: CharacterType!
     var mobility: Int!
     var style: CharacterStyle!
@@ -56,6 +61,11 @@ class Character: NSObject {
         self.attackSlots = attackSlots
         self.defenseSlots = defenseSlots
         self.recoverySlots = recoverySlots
+        
+        self.curAttackSlots = attackSlots
+        self.curDefenseSlots = defenseSlots
+        self.curRecoverySlots = recoverySlots
+        
         self.type = CharacterType(rawValue: type)
         self.mobility = mobility
         self.style = CharacterStyle(rawValue: style)
@@ -89,6 +99,7 @@ class Character: NSObject {
             return false
         }
     }
+
 }
 
 
