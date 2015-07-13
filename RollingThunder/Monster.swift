@@ -12,15 +12,15 @@ class Monster: NSObject {
    
     
     // stats
-    var attack: [Int]!
+    var mainAttack: [Int]!
     var health: Int!
     var curHealth: Int!
     
     // skills
     // special attack
     
-    init(attack: [Int], health: Int) {
-        self.attack = attack
+    init(mainAttack: [Int], health: Int) {
+        self.mainAttack = mainAttack
         self.health = health
     }
     
@@ -38,6 +38,9 @@ class Monster: NSObject {
         return curHealth
     }
     
+    func attack(turn: Int, formation: Formation) -> (Int,[Int]){
+        return (mainAttack[turn],formation.getRanAliveChar())
+    }
     
     
 }

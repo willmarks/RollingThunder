@@ -62,7 +62,7 @@ class Character: NSObject {
         self.specialDice = specialDice
     }
     
-    /*############# MODIFIERS ############*/
+    /*############# Battle Time Methods ############*/
     
     //modifies health
     func modHealth(xhealth: Int) -> Int{
@@ -80,4 +80,18 @@ class Character: NSObject {
         return dice[Int(arc4random_uniform(UInt32(dice.count)))]
     }
     
+    //Determines if the character is still alive (pergatory will effect this later)
+    func isAlive() -> Bool{
+        if(curHealth > 0){
+            return true
+        }else{
+            return false
+        }
+    }
 }
+
+
+
+
+
+

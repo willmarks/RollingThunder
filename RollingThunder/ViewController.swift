@@ -33,10 +33,10 @@ class ViewController: UIViewController {
         
         var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, dice: [die, die], specialDice: die)
         
-        var blackHand: Monster = Monster(attack: [10, 15], health: 100)
+        var blackHand: Monster = Monster(mainAttack: [10, 15], health: 100)
         
         // we need player formation with 2 characters
-        var pForm: Formation = Formation(characterField: [[nero, dante]])
+        var pForm: Formation = Formation(characterField: [[nero, dante, nil]])
         
         // we need an enemy formation
         var eForm: Formation = Formation(monsterField: [[blackHand]])
