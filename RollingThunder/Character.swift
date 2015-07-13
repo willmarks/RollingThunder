@@ -38,7 +38,12 @@ class Character: NSObject {
     var curAttackSlots: Int!
     var curDefenseSlots: Int!
     var curRecoverySlots: Int!
+    var curRemainDice: [[Int]]!
+    var curAttackSlotContent: [[Int]]!
+    var curDefenseSlotContent: [[Int]]!
+    var curRecoverySlotContent: [[Int]]!
     
+
     var type: CharacterType!
     var mobility: Int!
     var style: CharacterStyle!
@@ -62,9 +67,14 @@ class Character: NSObject {
         self.defenseSlots = defenseSlots
         self.recoverySlots = recoverySlots
         
-        self.curAttackSlots = attackSlots
-        self.curDefenseSlots = defenseSlots
-        self.curRecoverySlots = recoverySlots
+        self.curAttackSlots = 0
+        self.curDefenseSlots = 0
+        self.curRecoverySlots = 0
+        
+        self.curAttackSlotContent = [[]]
+        self.curDefenseSlotContent = [[]]
+        self.curRecoverySlotContent = [[]]
+
         
         self.type = CharacterType(rawValue: type)
         self.mobility = mobility
@@ -97,6 +107,57 @@ class Character: NSObject {
             return true
         }else{
             return false
+        }
+    }
+    //checks to see if there are already a max number of attack dice in the attack slot
+    func spaceAttackDice() -> Bool{
+        if(attackSlots == curAttackSlots){
+            return false
+        }else{
+            return true
+        }
+    }
+    //adds an attack dice to
+    func addAttackDice(die: [Int]) -> Int{
+        if(spaceAttackDice()){
+            curAttackSlotContent.append(die)
+            return curAttackSlots + 1
+        }else{
+            return curAttackSlots
+        }
+    }
+    //checks to see if there are already a max number of attack dice in the attack slot
+    func spaceDefenseDice() -> Bool{
+        if(attackSlots == curAttackSlots){
+            return false
+        }else{
+            return true
+        }
+    }
+    //adds an attack dice to
+    func addDefenseDice(die: [Int]) -> Int{
+        if(spaceAttackDice()){
+            curAttackSlotContent.append(die)
+            return curAttackSlots + 1
+        }else{
+            return curAttackSlots
+        }
+    }
+    //checks to see if there are already a max number of attack dice in the attack slot
+    func spaceRecoveryDice() -> Bool{
+        if(attackSlots == curAttackSlots){
+            return false
+        }else{
+            return true
+        }
+    }
+    //adds an attack dice to
+    func addRecoveryDice(die: [Int]) -> Int{
+        if(spaceAttackDice()){
+            curAttackSlotContent.append(die)
+            return curAttackSlots + 1
+        }else{
+            return curAttackSlots
         }
     }
 
