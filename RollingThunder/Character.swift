@@ -30,6 +30,7 @@ class Character: NSObject {
     
     // stats
     var health: Int!
+    var curHealth: Int!
     var attackSlots: Int!
     var defenseSlots: Int!
     var recoverySlots: Int!
@@ -51,6 +52,7 @@ class Character: NSObject {
         
         self.name = name
         self.health = health
+        self.curHealth = health
         self.attackSlots = attackSlots
         self.defenseSlots = defenseSlots
         self.recoverySlots = recoverySlots
@@ -61,4 +63,36 @@ class Character: NSObject {
         self.specialDice = specialDice
     }
     
+    /*############# Battle Time Methods ############*/
+    
+    //modifies health
+    func modHealth(xhealth: Int) -> Int{
+        curHealth = curHealth + xhealth
+        if(curHealth > health){
+            curHealth = health
+        }
+        if(curHealth < 0){
+            curHealth = 0
+        }
+        return curHealth
+    }
+    //Selects a random number from an array of Ints
+    func rollDice(dice: [Int]) -> Int{
+        return dice[Int(arc4random_uniform(UInt32(dice.count)))]
+    }
+    
+    //Determines if the character is still alive (pergatory will effect this later)
+    func isAlive() -> Bool{
+        if(curHealth > 0){
+            return true
+        }else{
+            return false
+        }
+    }
 }
+
+
+
+
+
+
