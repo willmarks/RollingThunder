@@ -109,6 +109,9 @@ class Character: NSObject {
             return false
         }
     }
+    
+    /*----------------- Dice Trackers and Setters -------------------*/
+
     //checks to see if there are already a max number of attack dice in the attack slot
     func spaceAttackDice() -> Bool{
         if(attackSlots == curAttackSlots){
@@ -117,7 +120,7 @@ class Character: NSObject {
             return true
         }
     }
-    //adds an attack dice to
+    //adds an attack dice to curAttackSlots and puts the actual dice in curAttackDiceContents
     func addAttackDice(die: [Int]) -> Int{
         if(spaceAttackDice()){
             curAttackSlotContent.append(die)
@@ -126,7 +129,7 @@ class Character: NSObject {
             return curAttackSlots
         }
     }
-    //checks to see if there are already a max number of attack dice in the attack slot
+    //checks to see if there are already a max number of Defense dice in the defense slot
     func spaceDefenseDice() -> Bool{
         if(attackSlots == curAttackSlots){
             return false
@@ -134,7 +137,7 @@ class Character: NSObject {
             return true
         }
     }
-    //adds an attack dice to
+    //adds an defense dice to curDefenseSlots and puts the actual dice in curDefenseDiceContents
     func addDefenseDice(die: [Int]) -> Int{
         if(spaceAttackDice()){
             curAttackSlotContent.append(die)
@@ -143,7 +146,7 @@ class Character: NSObject {
             return curAttackSlots
         }
     }
-    //checks to see if there are already a max number of attack dice in the attack slot
+    //checks to see if there are already a max number of recovery dice in the recovery slot
     func spaceRecoveryDice() -> Bool{
         if(attackSlots == curAttackSlots){
             return false
@@ -151,7 +154,7 @@ class Character: NSObject {
             return true
         }
     }
-    //adds an attack dice to
+    //adds an recovery dice to curRecoverySlots and puts the actual dice in curRecoveryDiceContents
     func addRecoveryDice(die: [Int]) -> Int{
         if(spaceAttackDice()){
             curAttackSlotContent.append(die)
