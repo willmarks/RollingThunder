@@ -131,7 +131,7 @@ class Character: NSObject {
     }
     //checks to see if there are already a max number of Defense dice in the defense slot
     func spaceDefenseDice() -> Bool{
-        if(attackSlots == curAttackSlots){
+        if(defenseSlots == curDefenseSlots){
             return false
         }else{
             return true
@@ -139,16 +139,16 @@ class Character: NSObject {
     }
     //adds an defense dice to curDefenseSlots and puts the actual dice in curDefenseDiceContents
     func addDefenseDice(die: [Int]) -> Int{
-        if(spaceAttackDice()){
-            curAttackSlotContent.append(die)
-            return curAttackSlots + 1
+        if(spaceDefenseDice()){
+            curDefenseSlotContent.append(die)
+            return curDefenseSlots + 1
         }else{
-            return curAttackSlots
+            return curDefenseSlots
         }
     }
     //checks to see if there are already a max number of recovery dice in the recovery slot
     func spaceRecoveryDice() -> Bool{
-        if(attackSlots == curAttackSlots){
+        if(recoverySlots == curRecoverySlots){
             return false
         }else{
             return true
@@ -156,11 +156,11 @@ class Character: NSObject {
     }
     //adds an recovery dice to curRecoverySlots and puts the actual dice in curRecoveryDiceContents
     func addRecoveryDice(die: [Int]) -> Int{
-        if(spaceAttackDice()){
-            curAttackSlotContent.append(die)
-            return curAttackSlots + 1
+        if(spaceRecoveryDice()){
+            curRecoverySlotContent.append(die)
+            return curRecoverySlots + 1
         }else{
-            return curAttackSlots
+            return curRecoverySlots
         }
     }
 
