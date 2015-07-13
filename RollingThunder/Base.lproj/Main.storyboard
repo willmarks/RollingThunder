@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -183,6 +183,7 @@
                         <outlet property="attackSlots" destination="KOk-9y-aPB" id="Kuu-UV-h0f"/>
                         <outlet property="characterGrid" destination="dZJ-Ta-Fur" id="Ecj-cr-1M0"/>
                         <outlet property="defenseSlots" destination="fjo-oG-C7U" id="bRB-ZN-D9K"/>
+                        <outlet property="enemyLabel" destination="SfU-To-mau" id="8yb-wS-I6i"/>
                         <outlet property="healingSlots" destination="adJ-Dn-vSx" id="z5y-H1-MKA"/>
                         <outlet property="health" destination="3B9-NM-Fbo" id="iL8-ew-mHi"/>
                         <outlet property="name" destination="jLg-JX-hh9" id="Yfn-UK-bqR"/>
