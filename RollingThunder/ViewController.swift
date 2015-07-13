@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var characterGrid: UICollectionView!
 
+    @IBOutlet weak var enemyLabel: UILabel!
+    
     var battleground: Battleground!
     
     override func viewDidLoad() {
@@ -32,7 +34,7 @@ class ViewController: UIViewController {
         var die = [1, 2, 3, 4, 5, 6]
         
         // characters
-        var nero = Character(name: "Nero",health: 20, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die], specialDice: die)
+        var nero = Character(name: "Nero",health: 40, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die, die], specialDice: die)
         
         var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, dice: [die, die], specialDice: die)
         
@@ -49,6 +51,8 @@ class ViewController: UIViewController {
         battleground = Battleground(level: [eForm], playerFormation: pForm)
         
         characterGrid.registerClass(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: "CharacterCell")
+        
+//        enemyLabel.text = "\(battleground.level[0].monsterField)
         
     }
 
@@ -105,8 +109,14 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         //the selectedCell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! CharacterCollectionViewCell
 
-        println(battleground.playerFormation.charField[0][indexPath.row]!.name)
-        
+        if let char = battleground.playerFormation.charField[0][indexPath.row] {
+            name.text = char.name
+            health.text = "\(char.health)/\(char.curHealth)"
+            numberDice.text = "Dice: \(char.dice.count)"
+            attackSlots.setTitle("\(char.attackSlots)/\(char.attackSlots)", forState: .Normal)
+            defenseSlots.setTitle("\(char.defenseSlots)/\(char.defenseSlots)", forState: .Normal)
+            healingSlots.setTitle("\(char.recoverySlots)/\(char.recoverySlots)", forState: .Normal)
+        }
     }
 }
 
