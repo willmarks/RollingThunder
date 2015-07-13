@@ -105,7 +105,8 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         //the selectedCell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! CharacterCollectionViewCell
 
-        println(battleground.playerFormation.charField[0][indexPath.row]?.name)
+        println(battleground.playerFormation.charField[0][indexPath.row].name
+    )
     }
 }
 
