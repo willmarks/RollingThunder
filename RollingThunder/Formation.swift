@@ -12,10 +12,10 @@ class Formation: NSObject {
    
     
     // characters
-    var charField: [[Character]]!
+    var charField: [[Character?]]!
     var monsterField: [[Monster]]!
     
-    init(characterField: [[Character]]) {
+    init(characterField: [[Character?]]) {
         
         self.charField = characterField
     }

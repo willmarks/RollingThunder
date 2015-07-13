@@ -20,29 +20,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var health: UILabel!
     
     @IBOutlet weak var characterGrid: UICollectionView!
-    
+
     var battleground: Battleground!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        self.characterGrid.delegate = self
         
         var die = [1, 2, 3, 4, 5, 6]
         
-        //characters
+        // characters
         var nero = Character(name: "Nero",health: 20, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die], specialDice: die)
         
         var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, dice: [die, die], specialDice: die)
         
+        // enemies
         var blackHand: Monster = Monster(attack: [10, 15], health: 100)
         
         // we need player formation with 2 characters
-        var pForm: Formation = Formation(characterField: [[nero, dante]])
+        var pForm: Formation = Formation(characterField: [[nero, dante, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]])
         
         // we need an enemy formation
         var eForm: Formation = Formation(monsterField: [[blackHand]])
         
         // battleground
         battleground = Battleground(level: [eForm], playerFormation: pForm)
+        
+        characterGrid.registerClass(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: "CharacterCell")
         
     }
 
@@ -68,10 +74,12 @@ extension ViewController : UICollectionViewDataSource {
     internal func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         //create the cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! CharacterCollectionViewCell
         
         // Configure the cell
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.maxWidth = characterGrid.bounds.size.width
+        
+        cell.name = battleground.playerFormation.charField[0][indexPath.row] == nil ? "nil" : battleground.playerFormation.charField[0][indexPath.row]!.name
         
         return cell
     }
@@ -83,24 +91,23 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         
         var width = characterGrid.collectionViewLayout.collectionViewContentSize().width / 3 - 10
         
-        println(width)
-        
         return CGSize(width: width, height: width)
     }
     
     internal func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        return UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        //the selectedCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! CharacterCollectionViewCell
+
+        println(battleground.playerFormation.charField[0][indexPath.row]?.name)
     }
 }
-
-
-
-
-
-
-
-
 
 
 

@@ -49,6 +49,7 @@ class Character: NSObject {
     
     init(name: String, health: Int, attackSlots: Int, defenseSlots: Int, recoverySlots: Int, type: Int, mobility: Int, style: Int, dice: [[Int]], specialDice: [Int]) {
         
+        self.name = name
         self.health = health
         self.attackSlots = attackSlots
         self.defenseSlots = defenseSlots
