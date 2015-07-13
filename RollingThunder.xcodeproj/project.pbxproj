@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		742297991B5335E000F2199F /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742297981B5335E000F2199F /* CharacterCollectionViewCell.swift */; };
 		8FD000581B4F770D003D5324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD000571B4F770D003D5324 /* AppDelegate.swift */; };
 		8FD0005A1B4F770D003D5324 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD000591B4F770D003D5324 /* ViewController.swift */; };
 		8FD0005D1B4F770D003D5324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FD0005B1B4F770D003D5324 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		742297981B5335E000F2199F /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		8FD000521B4F770D003D5324 /* RollingThunder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollingThunder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD000561B4F770D003D5324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FD000571B4F770D003D5324 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		8FD000541B4F770D003D5324 /* RollingThunder */ = {
 			isa = PBXGroup;
 			children = (
+				742297981B5335E000F2199F /* CharacterCollectionViewCell.swift */,
 				8FD000571B4F770D003D5324 /* AppDelegate.swift */,
 				8FD000591B4F770D003D5324 /* ViewController.swift */,
 				8FD000771B4F773D003D5324 /* Character.swift */,
@@ -230,6 +233,7 @@
 				8FD0005A1B4F770D003D5324 /* ViewController.swift in Sources */,
 				8FD0007E1B4F843A003D5324 /* Monster.swift in Sources */,
 				8FD000581B4F770D003D5324 /* AppDelegate.swift in Sources */,
+				742297991B5335E000F2199F /* CharacterCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
