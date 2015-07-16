@@ -24,14 +24,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var enemyLabel: UILabel!
     
     var battleground: Battleground!
+    var currentCell: CharacterCollectionViewCell?
+    var currentIndexPath: NSIndexPath?
+    
+    //probably gonna remove this later
+    var die: [Int]!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.characterGrid.delegate = self
+        self.characterGrid.allowsMultipleSelection = false
         
-        var die = [1, 2, 3, 4, 5, 6]
+        die = [1, 2, 3, 4, 5, 6]
         
         // characters
         var nero = Character(name: "Nero",health: 40, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die, die], specialDice: die)
@@ -60,11 +66,54 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // when the attack button is pressed move a die in
+    @IBAction func attackDiePressed(sender: AnyObject) {
+        
+        if let character = getCharacterAtSelectedCell() {
+            
+            character.addAttackDice(die)
+            attackSlots.setTitle("\(character.attackSlots)/\(character.curAttackSlots)", forState: .Normal)
+        }
+    }
+    
+    // when the health button is pressed move a die in
+    @IBAction func healthDiePressed(sender: AnyObject) {
+        
+        if let character = getCharacterAtSelectedCell() {
+            
+            character.addRecoveryDice(die)
+            healingSlots.setTitle("\(character.recoverySlots)/\(character.curRecoverySlots)", forState: .Normal)
+        }
+    }
+    
+    //when the defense button is pressed move a die in
+    @IBAction func defenseDiePressed(sender: AnyObject) {
+        
+        if let character = getCharacterAtSelectedCell() {
+            
+            character.addDefenseDice(die)
+            defenseSlots.setTitle("\(character.defenseSlots)/\(character.curDefenseSlots)", forState: .Normal)
+        }
+    }
+    
+    private func getCharacterAtSelectedCell() -> Character? {
+    
+        if currentCell != nil {
+            
+            let character: Character? = battleground.playerFormation.charField[0][currentIndexPath!.row]
+            
+            return character
+        }
+        
+        return nil
+    }
+    
 }
 
 // provides data to the characters
 extension ViewController : UICollectionViewDataSource {
+    
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 
         return 1
@@ -91,6 +140,7 @@ extension ViewController : UICollectionViewDataSource {
 
 // provides the layout for the characters
 extension ViewController : UICollectionViewDelegateFlowLayout {
+    
     internal func collectionView(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         var width = characterGrid.collectionViewLayout.collectionViewContentSize().width / 3 - 10
@@ -106,16 +156,19 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        //the selectedCell
+        // the selected Cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CharacterCell", forIndexPath: indexPath) as! CharacterCollectionViewCell
 
-        if let char = battleground.playerFormation.charField[0][indexPath.row] {
-            name.text = char.name
-            health.text = "\(char.health)/\(char.curHealth)"
-            numberDice.text = "Dice: \(char.dice.count)"
-            attackSlots.setTitle("\(char.attackSlots)/\(char.attackSlots)", forState: .Normal)
-            defenseSlots.setTitle("\(char.defenseSlots)/\(char.defenseSlots)", forState: .Normal)
-            healingSlots.setTitle("\(char.recoverySlots)/\(char.recoverySlots)", forState: .Normal)
+        currentCell = cell
+        currentIndexPath = indexPath
+        
+        if let character = battleground.playerFormation.charField[0][indexPath.row] {
+            name.text = character.name
+            health.text = "\(character.health)/\(character.curHealth)"
+            numberDice.text = "Dice: \(character.dice.count)"
+            attackSlots.setTitle("\(character.attackSlots)/\(character.curAttackSlots)", forState: .Normal)
+            defenseSlots.setTitle("\(character.defenseSlots)/\(character.curDefenseSlots)", forState: .Normal)
+            healingSlots.setTitle("\(character.recoverySlots)/\(character.curRecoverySlots)", forState: .Normal)
         }
     }
 }

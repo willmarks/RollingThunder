@@ -29,19 +29,19 @@ class Character: NSObject {
     var name: String!
     
     // stats
-    var health: Int!
-    var curHealth: Int!
-    var attackSlots: Int!
-    var defenseSlots: Int!
-    var recoverySlots: Int!
+    var health: Int
+    var curHealth: Int
+    var attackSlots: Int
+    var defenseSlots: Int
+    var recoverySlots: Int
     
-    var curAttackSlots: Int!
-    var curDefenseSlots: Int!
-    var curRecoverySlots: Int!
+    var curAttackSlots: Int
+    var curDefenseSlots: Int
+    var curRecoverySlots: Int
     var curRemainDice: [[Int]]!
     var curAttackSlotContent: [[Int]]!
     var curDefenseSlotContent: [[Int]]!
-    var curRecoverySlotContent: [[Int]]!
+    var curRecoverySlotContent: [[Int]]
     
 
     var type: CharacterType!
@@ -124,7 +124,7 @@ class Character: NSObject {
     func addAttackDice(die: [Int]) -> Int{
         if(spaceAttackDice()){
             curAttackSlotContent.append(die)
-            return curAttackSlots + 1
+            return curAttackSlots++
         }else{
             return curAttackSlots
         }
@@ -141,7 +141,7 @@ class Character: NSObject {
     func addDefenseDice(die: [Int]) -> Int{
         if(spaceDefenseDice()){
             curDefenseSlotContent.append(die)
-            return curDefenseSlots + 1
+            return curDefenseSlots++
         }else{
             return curDefenseSlots
         }
@@ -158,7 +158,7 @@ class Character: NSObject {
     func addRecoveryDice(die: [Int]) -> Int{
         if(spaceRecoveryDice()){
             curRecoverySlotContent.append(die)
-            return curRecoverySlots + 1
+            return curRecoverySlots++
         }else{
             return curRecoverySlots
         }
