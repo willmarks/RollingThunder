@@ -76,8 +76,7 @@ class ViewController: UIViewController {
         if let character = getSelectedCharacter() {
             
             character.addAttackDice()
-            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
-            attackSlots.setTitle("\(character.curAttackSlots)/\(character.attackSlots)", forState: .Normal)
+            updateUI(character)
         }
     }
     
@@ -87,8 +86,7 @@ class ViewController: UIViewController {
         if let character = getSelectedCharacter() {
             
             character.addRecoveryDice()
-            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
-            healingSlots.setTitle("\(character.curRecoverySlots)/\(character.recoverySlots)", forState: .Normal)
+            updateUI(character)
         }
     }
     
@@ -98,8 +96,16 @@ class ViewController: UIViewController {
         if let character = getSelectedCharacter() {
             
             character.addDefenseDice()
-            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
-            defenseSlots.setTitle("\(character.curDefenseSlots)/\(character.defenseSlots)", forState: .Normal)
+            updateUI(character)
+        }
+    }
+    
+    // resets the selected characters die
+    @IBAction func resetButtonPressed(sender: AnyObject) {
+        
+        if let character = getSelectedCharacter() {
+            character.resetDie()
+            updateUI(character)
         }
     }
     
@@ -113,16 +119,29 @@ class ViewController: UIViewController {
         return nil
     }
     
+    // updates all the labels for the UI
+    private func updateUI(character: Character) {
+        
+        name.text = character.name
+        health.text = "\(character.health)/\(character.curHealth)"
+        numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
+        attackSlots.setTitle("\(character.curAttackSlotContent.count)/\(character.attackSlots)", forState: .Normal)
+        defenseSlots.setTitle("\(character.curDefenseSlotContent.count)/\(character.defenseSlots)", forState: .Normal)
+        healingSlots.setTitle("\(character.curRecoverySlotContent.count)/\(character.recoverySlots)", forState: .Normal)
+    }
+    
 }
 
 // provides data to the characters
 extension ViewController : UICollectionViewDataSource {
     
+    // the number of sections in the view
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 
         return 1
     }
     
+    // the number of cells in a section
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return 12
@@ -157,7 +176,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     }
     
-    
+    // if a character cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // the selected Cell
@@ -167,12 +186,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         currentIndexPath = indexPath
         
         if let character = battleground.playerFormation.charField[0][indexPath.row] {
-            name.text = character.name
-            health.text = "\(character.health)/\(character.curHealth)"
-            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
-            attackSlots.setTitle("\(character.curAttackSlots)/\(character.attackSlots)", forState: .Normal)
-            defenseSlots.setTitle("\(character.curDefenseSlots)/\(character.defenseSlots)", forState: .Normal)
-            healingSlots.setTitle("\(character.curRecoverySlots)/\(character.recoverySlots)", forState: .Normal)
+            updateUI(character)
             
         }
     }

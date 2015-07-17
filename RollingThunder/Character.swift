@@ -36,11 +36,7 @@ class Character: NSObject {
     var recoverySlots   : Int
     
     // die
-    var curDice                 : Int
     var totalDie                : Int
-    var curAttackSlots          : Int
-    var curDefenseSlots         : Int
-    var curRecoverySlots        : Int
     var specialDice             : [Int]!
     var die                     : [[Int]]!
     var curAttackSlotContent    : [[Int]]!
@@ -69,16 +65,11 @@ class Character: NSObject {
         self.defenseSlots = defenseSlots
         self.recoverySlots = recoverySlots
         
-        self.curAttackSlots = 0
-        self.curDefenseSlots = 0
-        self.curRecoverySlots = 0
-        
-        self.curAttackSlotContent = [[]]
-        self.curDefenseSlotContent = [[]]
-        self.curRecoverySlotContent = [[]]
+        self.curAttackSlotContent = []
+        self.curDefenseSlotContent = []
+        self.curRecoverySlotContent = []
 
         self.die = die
-        self.curDice = die.count - 1
         self.totalDie = die.count
         self.mobility = mobility
         self.specialDice = specialDice
@@ -114,17 +105,17 @@ class Character: NSObject {
 
     // checks to see if there are already a max number of attack dice in the attack slot
     func spaceAttackDice() -> Bool{
-        return attackSlots != curAttackSlots
+        return attackSlots != curAttackSlotContent.count
     }
     
     // checks to see if there are already a max number of Defense dice in the defense slot
     func spaceDefenseDice() -> Bool{
-        return defenseSlots != curDefenseSlots
+        return defenseSlots != curDefenseSlotContent.count
     }
     
     // checks to see if there are already a max number of recovery dice in the recovery slot
     func spaceRecoveryDice() -> Bool{
-        return recoverySlots != curRecoverySlots
+        return recoverySlots != curRecoverySlotContent.count
     }
     
     func stillHaveDie() -> Bool {
@@ -136,10 +127,8 @@ class Character: NSObject {
         
         if(spaceAttackDice() && stillHaveDie()){
             curAttackSlotContent.append(nextDice())
-            return curAttackSlots++
-        }else{
-            return curAttackSlots
         }
+        return curAttackSlotContent.count
     }
 
     // adds an defense dice to curDefenseSlots and puts the actual dice in curDefenseDiceContents
@@ -147,10 +136,8 @@ class Character: NSObject {
         
         if(spaceDefenseDice() && stillHaveDie()){
             curDefenseSlotContent.append(nextDice())
-            return curDefenseSlots++
-        }else{
-            return curDefenseSlots
         }
+        return curDefenseSlotContent.count
     }
     
     // adds an recovery dice to curRecoverySlots and puts the actual dice in curRecoveryDiceContents
@@ -158,9 +145,23 @@ class Character: NSObject {
         
         if(spaceRecoveryDice() && stillHaveDie()){
             curRecoverySlotContent.append(nextDice())
-            return curRecoverySlots++
-        }else{
-            return curRecoverySlots
+        }
+        return curRecoverySlotContent.count
+    }
+    
+    // resets all of the characters die
+    func resetDie() {
+        
+        while !curAttackSlotContent.isEmpty {
+            die.append(curAttackSlotContent.removeLast())
+        }
+        
+        while !curRecoverySlotContent.isEmpty {
+            die.append(curRecoverySlotContent.removeLast())
+        }
+        
+        while !curDefenseSlotContent.isEmpty {
+            die.append(curDefenseSlotContent.removeLast())
         }
     }
 
@@ -169,10 +170,7 @@ class Character: NSObject {
     // removes a die from the characters bank and returns in
     // ONLY CALL THIS IF YOU STILL HAVE DIE
     private func nextDice() -> [Int]{
-        
-        var dice = die.removeAtIndex(curDice)
-        curDice--
-        return dice
+        return die.removeLast()
     }
 }
 
