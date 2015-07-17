@@ -39,8 +39,8 @@ class ViewController: UIViewController {
         die = [1, 2, 3, 4, 5, 6]
         
         // characters
-        var nero = Character(name: "Nero",health: 40, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die, die], specialDice: die)
-        var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, dice: [die, die], specialDice: die)
+        var nero = Character(name: "Nero",health: 40, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, die: [die, die, die], specialDice: die)
+        var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, die: [die, die], specialDice: die)
         
         // enemies
         var blackHand: Monster = Monster(mainAttack: [10, 15], health: 100, cdown: [1,2,3,], name: "Black Hand")
@@ -73,42 +73,43 @@ class ViewController: UIViewController {
     // when the attack button is pressed move a die in
     @IBAction func attackDiePressed(sender: AnyObject) {
         
-        if let character = getCharacterAtSelectedCell() {
+        if let character = getSelectedCharacter() {
             
-            character.addAttackDice(die)
-            attackSlots.setTitle("\(character.attackSlots)/\(character.curAttackSlots)", forState: .Normal)
+            character.addAttackDice()
+            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
+            attackSlots.setTitle("\(character.curAttackSlots)/\(character.attackSlots)", forState: .Normal)
         }
     }
     
     // when the health button is pressed move a die in
     @IBAction func healthDiePressed(sender: AnyObject) {
         
-        if let character = getCharacterAtSelectedCell() {
+        if let character = getSelectedCharacter() {
             
-            character.addRecoveryDice(die)
-            healingSlots.setTitle("\(character.recoverySlots)/\(character.curRecoverySlots)", forState: .Normal)
+            character.addRecoveryDice()
+            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
+            healingSlots.setTitle("\(character.curRecoverySlots)/\(character.recoverySlots)", forState: .Normal)
         }
     }
     
     //when the defense button is pressed move a die in
     @IBAction func defenseDiePressed(sender: AnyObject) {
         
-        if let character = getCharacterAtSelectedCell() {
+        if let character = getSelectedCharacter() {
             
-            character.addDefenseDice(die)
-            defenseSlots.setTitle("\(character.defenseSlots)/\(character.curDefenseSlots)", forState: .Normal)
+            character.addDefenseDice()
+            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
+            defenseSlots.setTitle("\(character.curDefenseSlots)/\(character.defenseSlots)", forState: .Normal)
         }
     }
     
-    private func getCharacterAtSelectedCell() -> Character? {
+    // gets the currently selected character
+    private func getSelectedCharacter() -> Character? {
     
         if currentCell != nil {
-            
             let character: Character? = battleground.playerFormation.charField[0][currentIndexPath!.row]
-            
             return character
         }
-        
         return nil
     }
     
@@ -168,10 +169,11 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         if let character = battleground.playerFormation.charField[0][indexPath.row] {
             name.text = character.name
             health.text = "\(character.health)/\(character.curHealth)"
-            numberDice.text = "Dice: \(character.dice.count)"
-            attackSlots.setTitle("\(character.attackSlots)/\(character.curAttackSlots)", forState: .Normal)
-            defenseSlots.setTitle("\(character.defenseSlots)/\(character.curDefenseSlots)", forState: .Normal)
-            healingSlots.setTitle("\(character.recoverySlots)/\(character.curRecoverySlots)", forState: .Normal)
+            numberDice.text = ("Die: \(character.die.count)/\(character.totalDie)")
+            attackSlots.setTitle("\(character.curAttackSlots)/\(character.attackSlots)", forState: .Normal)
+            defenseSlots.setTitle("\(character.curDefenseSlots)/\(character.defenseSlots)", forState: .Normal)
+            healingSlots.setTitle("\(character.curRecoverySlots)/\(character.recoverySlots)", forState: .Normal)
+            
         }
     }
 }

@@ -27,7 +27,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="attackDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gca-23-rUN"/>
+                                    <action selector="attackDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="24h-KS-JaR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjo-oG-C7U">
@@ -38,7 +38,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="defenseDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aiW-5p-Cwg"/>
+                                    <action selector="defenseDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w34-fb-K0I"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adJ-Dn-vSx">
@@ -49,7 +49,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="healthDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MxO-Vm-j3G"/>
+                                    <action selector="healthDiePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xqi-iL-40k"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dice 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdO-nV-iqc">
