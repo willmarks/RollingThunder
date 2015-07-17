@@ -34,31 +34,34 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
-        self.characterGrid.delegate = self
-        self.characterGrid.allowsMultipleSelection = false
+        /*----------------- testing stuff -------------------*/
         
         die = [1, 2, 3, 4, 5, 6]
         
         // characters
         var nero = Character(name: "Nero",health: 40, attackSlots: 2, defenseSlots: 1, recoverySlots: 1, type: 3, mobility: 1, style: 1, dice: [die, die, die], specialDice: die)
-        
         var dante = Character(name: "Dante", health: 20, attackSlots: 1, defenseSlots: 2, recoverySlots: 1, type: 1, mobility: 1, style: 2, dice: [die, die], specialDice: die)
         
         // enemies
-        var blackHand: Monster = Monster(mainAttack: [10, 15], health: 100, cdown: [1,2,3,])
+        var blackHand: Monster = Monster(mainAttack: [10, 15], health: 100, cdown: [1,2,3,], name: "Black Hand")
         
-        // we need player formation with 2 characters
-        var pForm: Formation = Formation(characterField: [[nero, dante, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]])
+        // formations
+        var playerForm: Formation = Formation(characterField: [[nero, dante, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]])
+        var enemyForm: Formation = Formation(monsterField: [[blackHand, nil, nil, blackHand, nil, nil, blackHand, nil, nil, blackHand, nil, nil]])
         
-        // we need an enemy formation
-        var eForm: Formation = Formation(monsterField: [[blackHand]])
+        /*----------------- testing stuff -------------------*/
         
         // battleground
-        battleground = Battleground(level: [eForm], playerFormation: pForm)
+        battleground = Battleground(level: [enemyForm], playerFormation: playerForm)
         
+        // collection view stuff
+        self.characterGrid.delegate = self
+        self.characterGrid.allowsMultipleSelection = false
         characterGrid.registerClass(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: "CharacterCell")
         
-//        enemyLabel.text = "\(battleground.level[0].monsterField)
+        // enemy label stuff
+        self.enemyLabel.numberOfLines = 0
+        self.enemyLabel.text = battleground.level[0].monsterString()
         
     }
 

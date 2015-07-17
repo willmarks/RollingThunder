@@ -13,21 +13,21 @@ class Formation: NSObject {
     
     // characters
     var charField: [[Character?]]!
-    var monsterField: [[Monster]]!
+    var monsterField: [[Monster?]]!
     
     init(characterField: [[Character?]]) {
         
         self.charField = characterField
     }
     
-    init(monsterField: [[Monster]]) {
+    init(monsterField: [[Monster?]]) {
         self.monsterField = monsterField
     }
     
     
-    /*######### Battle Time Methods ##########*/
-    
-    //returns positions [(x,y)] of alive characters in formation
+    /*--------- Battle Time Methods ---------*/
+
+    // returns positions [(x,y)] of alive characters in formation
     func getAliveCharLoc() -> [[Int]]?{
         var location: [[Int]] = [[-1,-1]]
         var position: [Int] = [0,0]
@@ -45,19 +45,53 @@ class Formation: NSObject {
         return location
     }
     
-    //return the location (x,y) of one random character
+    // return the location (x,y) of one random character
     func getRanAliveChar() -> [Int]{
         var locations: [[Int]]! = self.getAliveCharLoc()
         return locations[Int(arc4random_uniform(UInt32(locations.count)))]
     }
     
-    //returns true if all characters are dead in the formation
+    // returns true if all characters are dead in the formation
     func allDead() -> Bool{
         if(getAliveCharLoc()!.count == 1){
             return true
         }else{
             return false
         }
+    }
+    
+    /*--------- Utlities ---------*/
+    
+    // the number of monsters in the formation
+    func numberOfMonsters() -> Int {
+        
+        var count = 0
+        
+        for row in monsterField {
+            for monster in row {
+                if monster != nil {
+                    count++
+                }
+            }
+        }
+        
+        return count
+    }
+    
+    // returns a string of all the monsters
+    func monsterString() -> String {
+        
+        var monsterString = ""
+        
+        for row in monsterField {
+            for monster in row {
+                if monster != nil {
+                    monsterString += "\(monster!.name): \(monster!.curHealth) \n"
+                }
+            }
+        }
+        
+        return monsterString
     }
 }
 

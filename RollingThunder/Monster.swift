@@ -10,25 +10,30 @@ import UIKit
 
 class Monster: NSObject {
    
+    // info
+    var name: String
     
     // stats
-    var mainAttack: [Int]!
-    var cooldown: [Int];
     var health: Int!
     var curHealth: Int!
+    var cooldown: [Int]
+    var mainAttack: [Int]!
     
     // skills
     // special attack
     
-    init(mainAttack: [Int], health: Int, cdown: [Int]) {
-        self.cooldown = cdown
-        self.mainAttack = mainAttack
+    init(mainAttack: [Int], health: Int, cdown: [Int], name: String) {
+        
+        self.name = name
         self.health = health
+        self.cooldown = cdown
+        self.curHealth = health
+        self.mainAttack = mainAttack
     }
     
-    /*############# Battle Time Methods ############*/
+    /*---------- Battle Time Methods ----------*/
     
-    //modifies health
+    // modifies health
     func modHealth(xhealth: Int) -> Int{
         curHealth = curHealth + xhealth
         if(curHealth > health){
@@ -44,5 +49,9 @@ class Monster: NSObject {
         return (mainAttack[turn],cooldown[turn],formation.getRanAliveChar())
     }
     
+    // determines if the monster is alive
+    func isAlive() -> Bool {
+        return curHealth > 0
+    }
     
 }
