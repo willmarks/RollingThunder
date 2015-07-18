@@ -54,11 +54,12 @@ class ViewController: UIViewController {
         // battleground
         battleground = Battleground(level: [enemyForm], playerFormation: playerForm)
         
-        // collection view stuff
-        self.characterGrid.delegate = self
-        self.characterGrid.allowsMultipleSelection = false
-        characterGrid.registerClass(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: "CharacterCell")
         
+        // collection view stuff
+        
+        self.initializeCharacterGrid()
+        
+
         // enemy label stuff
         self.enemyLabel.numberOfLines = 0
         self.enemyLabel.text = battleground.level[0].monsterString()
@@ -90,7 +91,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //when the defense button is pressed move a die in
+    // when the defense button is pressed move a die in
     @IBAction func defenseDiePressed(sender: AnyObject) {
         
         if let character = getSelectedCharacter() {
@@ -109,6 +110,8 @@ class ViewController: UIViewController {
         }
     }
     
+    /*------------ utlities --------------*/
+    
     // gets the currently selected character
     private func getSelectedCharacter() -> Character? {
     
@@ -117,6 +120,22 @@ class ViewController: UIViewController {
             return character
         }
         return nil
+    }
+    
+    // sets up the UICollectionView
+    private func initializeCharacterGrid() {
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        var width = characterGrid.collectionViewLayout.collectionViewContentSize().width / 3
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: width, height: width)
+                
+        self.characterGrid.delegate = self
+        self.characterGrid.scrollEnabled = false
+        self.characterGrid.collectionViewLayout = layout
+        self.characterGrid.allowsMultipleSelection = false
+        characterGrid.registerClass(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: "CharacterCell")
+        
     }
     
     // updates all the labels for the UI
