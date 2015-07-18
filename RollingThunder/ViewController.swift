@@ -126,10 +126,10 @@ class ViewController: UIViewController {
     private func initializeCharacterGrid() {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        var width = characterGrid.collectionViewLayout.collectionViewContentSize().width / 3
+        var width = characterGrid.bounds.size.width / 3
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: width, height: width)
-                
+        
         self.characterGrid.delegate = self
         self.characterGrid.scrollEnabled = false
         self.characterGrid.collectionViewLayout = layout
